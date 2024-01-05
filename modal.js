@@ -20,8 +20,20 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-/* */
+/****** Fermer la modal ******/
 
+// Je récupére l'élément de la classe='close' dans la span
+const closeBtn = document.querySelector(".close");
+
+// J'ajoute un écouteur d'évenement au "clic" sur le bouton
+closeBtn.addEventListener("click", closeModal);
+
+// Avec la fonction je ferme la modale en la masquant avec un display none
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
+/****** Fonction vérification formulaire ******/
 
 function validate() {
   // Récupérer les valeurs des champs
@@ -33,13 +45,20 @@ function validate() {
   const location = document.querySelector('input[name="location"]:checked');
   const checkbox1 = document.getElementById('checkbox1');
 
-  // Vérifier si les champs obligatoires sont vides
-  if (firstName === '' || lastName === '' || email === '' || birthdate === '' || quantity === '' || !location || !checkbox1.checked) {
-    // Afficher un message d'erreur
-    alert("Veuillez remplir tous les champs obligatoires et accepter les conditions d'utilisation.");
-    return false; // Empêcher le formulaire de se soumettre
+  if (firstName === '') {
+    firstNameError.textContent = 'Prénom manquant';
+    firstNameError.style.color = 'red';
+    // return false;
   }
 
-  // Si tout est valide, le formulaire peut être soumis
+  // On vérifie si les champs obligatoires sont vides
+  if (firstName === '' || lastName === '' || email === '' || birthdate === '' || quantity === '' || !location || !checkbox1.checked) {
+    // Si les champs sont vides, on affiche un message d'erreur
+    alert("Veuillez remplir tous les champs obligatoires et accepter les conditions d'utilisation.")
+    // Empêcher le formulaire de se soumettre
+    return false; 
+  }
+
+  // On vérifie si tout est valide, alors le formulaire peut être soumis
   return true;
 }
