@@ -17,6 +17,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
+  // display: block = rendre visible la modale en tant que bloc sur la page (utilisé pour afficher des éléments en mode boîte).
   modalbg.style.display = "block";
 }
 
@@ -28,14 +29,17 @@ const closeBtn = document.querySelector(".close");
 // J'ajoute un écouteur d'évenement au "clic" sur le bouton
 closeBtn.addEventListener("click", closeModal);
 
-// Avec la fonction je ferme la modale en la masquant avec un display none
+// Avec la fonction je ferme la modale avec un display none
 function closeModal() {
   modalbg.style.display = "none";
 }
 
 /****** Fonction vérification formulaire ******/
+const reserve = document.getElementById('reserve')
+reserve.addEventListener('submit', validateForm)
 
-function validate() {
+function validateForm(event) {
+  event.preventDefault()
   // Récupérer les valeurs des champs
   const firstName = document.getElementById('first').value;
   const lastName = document.getElementById('last').value;
@@ -45,11 +49,28 @@ function validate() {
   const location = document.querySelector('input[name="location"]:checked');
   const checkbox1 = document.getElementById('checkbox1');
 
+  const firstNameError = document.getElementById('firstNameError')
+  const lastNameError = document.getElementById('lastNameError')
+  const emailError = document.getElementById('emailError')
+
   if (firstName === '') {
     firstNameError.textContent = 'Prénom manquant';
-    firstNameError.style.color = 'red';
-    // return false;
+    // firstNameError.style.color = 'red';
   }
+  console.log('firstName', firstName)
+
+  if (lastName === '') {
+    lastNameError.textContent = 'Nom manquant';
+    // lastNameError.style.color = 'red';
+  }
+  console.log('lastName', lastName)
+
+  if (email === '') {
+    emailError.textContent = 'e-mail manquant';
+    // emailError.style.color = 'red';
+  }
+  console.log('email', email)
+
 
   // On vérifie si les champs obligatoires sont vides
   if (firstName === '' || lastName === '' || email === '' || birthdate === '' || quantity === '' || !location || !checkbox1.checked) {
