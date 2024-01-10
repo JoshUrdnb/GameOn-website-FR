@@ -55,19 +55,16 @@ function validateForm(event) {
 
   if (firstName === '') {
     firstNameError.textContent = 'Prénom manquant';
-    // firstNameError.style.color = 'red';
   }
   console.log('firstName', firstName)
 
   if (lastName === '') {
     lastNameError.textContent = 'Nom manquant';
-    // lastNameError.style.color = 'red';
   }
   console.log('lastName', lastName)
 
   if (email === '') {
     emailError.textContent = 'e-mail manquant';
-    // emailError.style.color = 'red';
   }
   console.log('email', email)
 

@@ -208,6 +208,15 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+/*** Propriété CSS ajouté ***/
+
+.colorError {
+  color: #fe142f;
+}
+
+/*** ******************* ***/
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
