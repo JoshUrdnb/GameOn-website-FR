@@ -32,31 +32,53 @@ closeBtn.addEventListener("click", closeModal);
 // Avec la fonction je ferme la modale avec un display none
 function closeModal() {
   modalbg.style.display = "none";
+  const reserve = document.getElementById('reserve')
+  reserve.reset()
+  
+  // const firstName = document.getElementById('first')
+  // firstName.value = ''
+  const firstNameError = document.getElementById('firstNameError')
+  firstNameError.textContent = ''
 }
 
 /****** Fonction vérification formulaire ******/
+function validateFirstName() {
+  const firstName = document.getElementById('first').value
+  const firstNameError = document.getElementById('firstNameError')
+
+  if (firstName === '') {
+      firstNameError.textContent = 'Prénom manquant';
+    return false
+  }
+  console.log('firstName', firstName)
+  return true
+}
+
 const reserve = document.getElementById('reserve')
 reserve.addEventListener('submit', validateForm)
 
 function validateForm(event) {
   event.preventDefault()
   // Récupérer les valeurs des champs
-  const firstName = document.getElementById('first').value;
+  // const firstName = document.getElementById('first').value;
   const lastName = document.getElementById('last').value;
   const email = document.getElementById('email').value;
-  const birthdate = document.getElementById('birthdate').value;
-  const quantity = document.getElementById('quantity').value;
-  const location = document.querySelector('input[name="location"]:checked');
-  const checkbox1 = document.getElementById('checkbox1');
+  // const birthdate = document.getElementById('birthdate').value;
+  // const quantity = document.getElementById('quantity').value;
+  // const location = document.querySelector('input[name="location"]:checked');
+  // const checkbox1 = document.getElementById('checkbox1');
 
-  const firstNameError = document.getElementById('firstNameError')
+  const isFirstNameValid = validateFirstName()
+  console.log(isFirstNameValid)
+
+  // const firstNameError = document.getElementById('firstNameError')
   const lastNameError = document.getElementById('lastNameError')
   const emailError = document.getElementById('emailError')
 
-  if (firstName === '') {
-    firstNameError.textContent = 'Prénom manquant';
-  }
-  console.log('firstName', firstName)
+  // if (firstName === '') {
+  //   firstNameError.textContent = 'Prénom manquant';
+  // }
+  // console.log('firstName', firstName)
 
   if (lastName === '') {
     lastNameError.textContent = 'Nom manquant';
@@ -68,15 +90,14 @@ function validateForm(event) {
   }
   console.log('email', email)
 
-
   // On vérifie si les champs obligatoires sont vides
-  if (firstName === '' || lastName === '' || email === '' || birthdate === '' || quantity === '' || !location || !checkbox1.checked) {
+  if (isFirstNameValid === true) {
     // Si les champs sont vides, on affiche un message d'erreur
     alert("Veuillez remplir tous les champs obligatoires et accepter les conditions d'utilisation.")
     // Empêcher le formulaire de se soumettre
     return false; 
   }
 
-  // On vérifie si tout est valide, alors le formulaire peut être soumis
-  return true;
+  // // On vérifie si tout est valide, alors le formulaire peut être soumis
+  // return true;
 }
