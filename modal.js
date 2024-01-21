@@ -49,27 +49,6 @@ function closeModal() {
   clearError('quantityError')
   clearError('locationError')
   clearError('checkbox1Error')
-
-  // const firstNameError = document.getElementById('firstNameError')
-  // firstNameError.textContent = ''
-
-  // const lastNameError = document.getElementById('lastNameError')
-  // lastNameError.textContent = ''
-
-  // const emailError = document.getElementById('emailError')
-  // emailError.textContent = ''
-
-  // const birthdateError = document.getElementById('birthdateError')
-  // birthdateError.textContent = ''
-
-  // const quantityError = document.getElementById('quantityError')
-  // quantityError.textContent = ''
-
-  // const selectedLocationError = document.getElementById('locationError');
-  // selectedLocationError.textContent = ''
-
-  // const checkbox1Error = document.getElementById('checkbox1Error')
-  // checkbox1Error.textContent = ''
 }
 
 /****** Fonction vérification formulaire ******/
