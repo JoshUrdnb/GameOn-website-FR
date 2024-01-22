@@ -127,7 +127,7 @@ function validateQuantity() {
   if (quantity === '') {
     quantityError.textContent = 'Parcitipation(s) manquante(s)';
     return false
-  } else if (!regex.test(inputValue)) { // Le type=number dans index.html semble bloqué la verification en JS.
+  } else if (!regex.test(quantity)) { // Le type=number dans index.html semble bloqué la verification en JS.
     quantityError.textContent = 'Veuillez saisir une valeur numérique valide';
   }
   console.log('quantity', quantity)
