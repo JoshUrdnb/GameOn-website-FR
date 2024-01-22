@@ -60,10 +60,11 @@ function validateFirstName() {
   const regex = /.{2,}/;
 
   if (firstName === '') {
-      firstNameError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
+      firstNameError.textContent = 'Veuillez remplir le champ du prénom.'
     return false
   } else if (!regex.test(firstName)){
-      console.log("minimum 2 charactères")
+      // console.log("minimum 2 charactères")
+    firstNameError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
   }
   console.log('firstName', firstName)
   return true
@@ -73,10 +74,15 @@ function validateLastName() {
   const lastName = document.getElementById('last').value
   const lastNameError = document.getElementById('lastNameError')
 
+  const regex = /.{2,}/;
+
   if (lastName === '') {
-      lastNameError.textContent = 'Nom manquant';
+      lastNameError.textContent = 'Veuillez remplir le champ du nom.';
     return false
-  }
+  } else if (!regex.test(lastName)){
+    // console.log("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
+    lastNameError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+}
   console.log('lastName', lastName)
   return true
 }
@@ -86,9 +92,12 @@ function validateEmail() {
   const emailError = document.getElementById('emailError')
 
   if (email === '') {
-      emailError.textContent = 'email manquant';
+      emailError.textContent = 'Veuillez renseigner votre email';
     return false
-  }
+  } else if (!email.includes("@")){ // Le type=email dans index.html semble bloqué la verification en JS.
+    emailError.textContent = "Ce n'est pas le bon format d'adresse email.";
+}
+
   console.log('email', email)
   return true
 }
@@ -97,10 +106,14 @@ function validateBirthdate() {
   const birthdate = document.getElementById('birthdate').value;
   const birthdateError = document.getElementById('birthdateError')
 
+  // const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+
   if (birthdate === '') {
-    birthdateError.textContent = 'Vous devez entrer votre date de naissance.';
+    birthdateError.textContent = 'Veuillez renseigner votre date de naissance.';
     return false
-  }
+  } // else if (!regex.test(birthdate)) {
+  //   birthdateError.textContent = 'Le format de la date est invalide.'
+  // }
   console.log('birthdate', birthdate)
   return true
 }
@@ -109,9 +122,13 @@ function validateQuantity() {
   const quantity = document.getElementById('quantity').value;
   const quantityError = document.getElementById('quantityError')
 
+  const regex = /^\d+$/;
+
   if (quantity === '') {
-    quantityError.textContent = 'Quantitée manquante';
+    quantityError.textContent = 'Parcitipation(s) manquante(s)';
     return false
+  } else if (!regex.test(inputValue)) { // Le type=number dans index.html semble bloqué la verification en JS.
+    quantityError.textContent = 'Veuillez saisir une valeur numérique valide';
   }
   console.log('quantity', quantity)
   return true
