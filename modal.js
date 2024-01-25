@@ -106,13 +106,13 @@ function validateBirthdate() {
   const birthdate = document.getElementById('birthdate').value;
   const birthdateError = document.getElementById('birthdateError')
 
-  // const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+  // const regex = /^(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[0-2])\-\d{4}$/
 
   if (birthdate === '') {
     birthdateError.textContent = 'Veuillez renseigner votre date de naissance.';
     return false
-  } // else if (!regex.test(birthdate)) {
-  //   birthdateError.textContent = 'Le format de la date est invalide.'
+  } //else if (!regex.test(birthdate)) {
+  // birthdateError.textContent = 'Le format de la date est invalide.'
   // }
   console.log('birthdate', birthdate)
   return true
@@ -189,6 +189,14 @@ function validateForm(event) {
   if (isFirstNameValid === false || isLastNameValid === false || isEmailValid === false || isBirthdateValid === false || 
       isQuantityValid === false || isLocationValid === false || isCheckbox1Valid === false) {
     return false; 
+  } else {
+    const displayValidation = document.getElementById('displayValidation')
+    // displayValidation.style.display = 'block'
+    displayValidation.classList.add('show');
+
+    const reserve = document.getElementById('reserve')
+    reserve.classList.remove('show');
+    reserve.classList.add('hide');
   }
 
   // On vérifie si tout est valide, alors le formulaire peut être soumis
