@@ -51,25 +51,15 @@
       </button>
     </div>
 
-
-
     <div class="bground">
-
       <div class="content">
-
         <span class="close"></span>
-
         <div class="modal-body">
 
-          <div id="displayValidation" class="hide">
-            <p>Merci ! Votre réservation a été reçue.</p>
-          </div>
-
           <form id="reserve" novalidate="novalidate" class="show">
-
             <div class="formData">
               <label>Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first"/><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
               <p id="firstNameError" class="colorError"></p>
             </div>
 
@@ -100,7 +90,6 @@
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
 
             <div class="formData">
-
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
@@ -132,7 +121,6 @@
                 Portland</label>
 
               <p id="locationError" class="colorError"></p>
-
             </div>
 
             <div class="formData">
@@ -148,18 +136,23 @@
                 <span class="checkbox-icon"></span>
                 Je souhaite être prévenu des prochains évènements.
               </label>
+              <p id="checkbox2Error" class="colorError"></p>
               <br>
             </div>
-
-            <!-- <input class="btn-submit" type="submit" class="button" value="C'est parti" /> -->
             <input class="btn-submit button" type="submit" value="C'est parti" />
-
           </form>
-          
+
+          <div id="displayValidation" class="hide">
+            <div class="validationContainer">
+              <p>Merci ! Votre réservation a été reçue.</p>
+              <button class="btn-signout">Fermer</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-    
+
   </main>
   <footer>
     <p class="copyrights">

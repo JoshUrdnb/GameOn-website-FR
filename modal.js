@@ -22,10 +22,11 @@ function launchModal() {
 }
 
 /****** Fermer la modal ******/
+const btnClose = document.querySelector(".btn-signout");
+btnClose.addEventListener("click", closeModal);
 
 // Je récupére l'élément de la classe='close' dans la span
 const closeBtn = document.querySelector(".close");
-
 // J'ajoute un écouteur d'évenement au "clic" sur le bouton
 closeBtn.addEventListener("click", closeModal);
 
@@ -60,7 +61,7 @@ function validateFirstName() {
   const regex = /.{2,}/;
 
   if (firstName === '') {
-      firstNameError.textContent = 'Veuillez remplir le champ du prénom.'
+      firstNameError.textContent = 'Veuillez renseigner votre prénom.'
     return false
   } else if (!regex.test(firstName)){
       // console.log("minimum 2 charactères")
@@ -77,7 +78,7 @@ function validateLastName() {
   const regex = /.{2,}/;
 
   if (lastName === '') {
-      lastNameError.textContent = 'Veuillez remplir le champ du nom.';
+      lastNameError.textContent = 'Veuillez renseigner votre nom.';
     return false
   } else if (!regex.test(lastName)){
     // console.log("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
@@ -109,7 +110,7 @@ function validateBirthdate() {
   // const regex = /^(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[0-2])\-\d{4}$/
 
   if (birthdate === '') {
-    birthdateError.textContent = 'Veuillez renseigner votre date de naissance.';
+    birthdateError.textContent = 'Vous devez entrer votre date de naissance.';
     return false
   } //else if (!regex.test(birthdate)) {
   // birthdateError.textContent = 'Le format de la date est invalide.'
@@ -158,6 +159,18 @@ function validateCheckbox1() {
   return true
 }
 
+function validateCheckbox2() {
+  const checkbox2 = document.getElementById('checkbox2');
+  // const checkbox2Error = document.getElementById('checkbox2Error')
+
+  // if (!checkbox2.checked) {
+  //   checkbox2Error.textContent = 'Champs non obligatoire.';
+  //   return false
+  // }
+  console.log('checkbox2', checkbox2.checked)
+  return true
+}
+
 const reserve = document.getElementById('reserve')
 reserve.addEventListener('submit', validateForm)
 
@@ -185,20 +198,20 @@ function validateForm(event) {
   const isCheckbox1Valid = validateCheckbox1()
   // console.log(isCheckbox1Valid)
 
+  const isCheckbox2Valid = validateCheckbox2()
+  // console.log(isCheckbox1Valid)
+
   // On vérifie si les champs obligatoires sont vides
   if (isFirstNameValid === false || isLastNameValid === false || isEmailValid === false || isBirthdateValid === false || 
-      isQuantityValid === false || isLocationValid === false || isCheckbox1Valid === false) {
+      isQuantityValid === false || isLocationValid === false || isCheckbox1Valid === false || isCheckbox2Valid === false) {
     return false; 
   } else {
     const displayValidation = document.getElementById('displayValidation')
-    // displayValidation.style.display = 'block'
     displayValidation.classList.add('show');
 
-    const reserve = document.getElementById('reserve')
     reserve.classList.remove('show');
     reserve.classList.add('hide');
   }
-
   // On vérifie si tout est valide, alors le formulaire peut être soumis
   return true;
 }
