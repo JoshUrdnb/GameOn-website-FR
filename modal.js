@@ -66,6 +66,7 @@ function validateFirstName() {
   } else if (!regex.test(firstName)){
       // console.log("minimum 2 charactères")
     firstNameError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+    return false
   }
   console.log('firstName', firstName)
   return true
@@ -83,6 +84,7 @@ function validateLastName() {
   } else if (!regex.test(lastName)){
     // console.log("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
     lastNameError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+    return false
 }
   console.log('lastName', lastName)
   return true
@@ -97,6 +99,7 @@ function validateEmail() {
     return false
   } else if (!email.includes("@")){ // Le type=email dans index.html semble bloqué la verification en JS.
     emailError.textContent = "Ce n'est pas le bon format d'adresse email.";
+    return false
 }
 
   console.log('email', email)
@@ -130,6 +133,7 @@ function validateQuantity() {
     return false
   } else if (!regex.test(quantity)) { // Le type=number dans index.html semble bloqué la verification en JS.
     quantityError.textContent = 'Veuillez saisir une valeur numérique valide';
+    return false
   }
   console.log('quantity', quantity)
   return true
